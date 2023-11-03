@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+# Hosted URl [ToDo App](https://ash6747.github.io/Todo-App/).
+# Project Details
+We import the saveTodos and loadTodos functions from the todoData.js file.
+When the component mounts, we use loadTodos to load TODO data from local storage.
+Whenever the todos state changes, we use saveTodos to save the updated TODO data to local storage.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We added a timestamp property to each TODO object to keep track of their creation and completion times. This is crucial for sorting.
 
-## Available Scripts
+When a new TODO is added, it is inserted at the beginning of the todos array to ensure that the most recent TODOs appear at the top.
 
-In the project directory, you can run:
+We added sorting functions (sortByCreation and sortByCompletion) to control the order in which TODOs are displayed. sortByCreation sorts TODOs by creation timestamp (most recent on top), and sortByCompletion sorts TODOs by completion status and completion timestamp (most recent completed on top).
 
-### `npm start`
+In the ul element, we use todos.sort(sortByCompletion) to sort the TODOs before mapping and rendering them. This ensures that active TODOs appear at the top in order of creation, and completed TODOs appear at the bottom in order of completion.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We added an "Edit" button to each TODO card, which allows you to edit the title and description of the TODO item when clicked.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+When the "Edit" button is clicked, it sets the editIndex state to the index of the TODO item being edited. This enables the "Update" and "Cancel" buttons to appear and allows you to perform the update or cancel the edit.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The updateTodo function updates the title and description of the TODO item being edited when you click the "Update" button.
